@@ -1,0 +1,173 @@
+name: upstream sync
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'vendored path to sync, blank for all'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: upstream-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: install python deps
+        run: pip install pyyaml requests
+
+      - name: fetch upstream and stage candidate updates
+        id: stage
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET: ${{ inputs.target }}
+        run: |
+          python3 <<'PY'
+          import os, sys, json, yaml, pathlib, requests
+
+          target = os.environ.get('TARGET', '').strip()
+          sources = yaml.safe_load(open('upstream-sources.yml'))['sources']
+          if target:
+              sources = [s for s in sources if s['vendored'] == target]
+              if not sources:
+                  sys.exit(f"no source entry for vendored path {target}")
+
+          updates = []
+          for src in sources:
+              vendored_path = pathlib.Path(src['vendored'])
+              repo = src['upstream']['repo']
+              upstream_path = src['upstream']['path']
+              pinned = src['upstream']['pinned_ref']
+
+              r = requests.get(f"https://api.github.com/repos/{repo}", timeout=15)
+              r.raise_for_status()
+              default_branch = r.json()['default_branch']
+              r = requests.get(f"https://api.github.com/repos/{repo}/commits/{default_branch}", timeout=15)
+              r.raise_for_status()
+              head_sha = r.json()['sha']
+
+              if head_sha == pinned:
+                  print(f"  {vendored_path}, pinned at head, no fetch needed")
+                  continue
+
+              r = requests.get(f"https://raw.githubusercontent.com/{repo}/{head_sha}/{upstream_path}", timeout=15)
+              if r.status_code == 404:
+                  print(f"  {vendored_path}, upstream path missing at head, manual review needed, skipping")
+                  continue
+              r.raise_for_status()
+              upstream_text = r.text
+
+              vendored_text = vendored_path.read_text() if vendored_path.exists() else ''
+
+              suffix = vendored_path.suffix
+              try:
+                  if suffix in ('.yaml', '.yml'):
+                      upstream_data = yaml.safe_load(upstream_text)
+                  else:
+                      upstream_data = json.loads(upstream_text)
+              except Exception as e:
+                  print(f"  {vendored_path}, upstream content does not parse, {e}, skipping")
+                  continue
+
+              # uuid is the database identity, locally owned, never overwritten by upstream.
+              if vendored_text:
+                  vendored_data = (yaml.safe_load(vendored_text) if suffix in ('.yaml', '.yml')
+                                   else json.loads(vendored_text))
+                  if isinstance(vendored_data, dict) and 'uuid' in vendored_data:
+                      upstream_data['uuid'] = vendored_data['uuid']
+
+              # carry forward ospite tag additions if upstream removed them.
+              if vendored_text:
+                  vendored_tags = set(vendored_data.get('tags', []) if isinstance(vendored_data, dict) else [])
+                  upstream_tags = list(upstream_data.get('tags', []) or [])
+                  for t in vendored_tags:
+                      if t not in upstream_tags:
+                          upstream_tags.append(t)
+                  upstream_data['tags'] = upstream_tags
+
+              if suffix in ('.yaml', '.yml'):
+                  new_text = yaml.safe_dump(upstream_data, sort_keys=False)
+              else:
+                  new_text = json.dumps(upstream_data, indent=4) + "\n"
+
+              if new_text == vendored_text:
+                  print(f"  {vendored_path}, content matches after overlay, only ref bump needed")
+                  vendored_changed = False
+              else:
+                  vendored_path.write_text(new_text)
+                  vendored_changed = True
+
+              raw = pathlib.Path('upstream-sources.yml').read_text().splitlines(keepends=True)
+              i = 0
+              while i < len(raw):
+                  line = raw[i]
+                  if line.strip() == f"vendored: {src['vendored']}":
+                      for j in range(i + 1, min(i + 10, len(raw))):
+                          if raw[j].lstrip().startswith('pinned_ref:'):
+                              indent = raw[j][:len(raw[j]) - len(raw[j].lstrip())]
+                              raw[j] = f"{indent}pinned_ref: {head_sha}\n"
+                              break
+                  i += 1
+              pathlib.Path('upstream-sources.yml').write_text(''.join(raw))
+
+              updates.append({
+                  'vendored': src['vendored'],
+                  'upstream_path': upstream_path,
+                  'old_ref': pinned,
+                  'new_ref': head_sha,
+                  'content_changed': vendored_changed,
+              })
+
+          pathlib.Path('updates.json').write_text(json.dumps(updates, indent=2))
+          print(f"\nstaged {len(updates)} updates")
+          PY
+
+      - name: open pr if there are updates
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ ! -s updates.json ]] || [[ "$(cat updates.json)" == "[]" ]]; then
+            echo "no updates to publish"
+            exit 0
+          fi
+
+          COUNT=$(python3 -c "import json; print(len(json.load(open('updates.json'))))")
+          BRANCH="upstream-sync/$(date +%Y%m%d-%H%M%S)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add games/ upstream-sources.yml
+          git commit -m "sync upstream eggs ($COUNT updated)"
+          git push origin "$BRANCH"
+
+          BODY=$(python3 <<'PY'
+          import json
+          updates = json.load(open('updates.json'))
+          lines = ["automated sync of upstream eggs.", "", "| vendored | upstream path | old ref | new ref | content changed |", "|---|---|---|---|---|"]
+          for u in updates:
+              lines.append(f"| `{u['vendored']}` | `{u['upstream_path']}` | `{u['old_ref'][:7]}` | `{u['new_ref'][:7]}` | {'yes' if u['content_changed'] else 'no'} |")
+          lines += ["", "vendored uuids and ospite tag additions are preserved across sync. publish lint runs on this pr, structural breakage blocks the merge."]
+          print("\n".join(lines))
+          PY
+          )
+
+          gh pr create \
+            --title "sync upstream eggs ($COUNT updated)" \
+            --body "$BODY" \
+            --base main \
+            --head "$BRANCH" \
+            --label "upstream-sync"

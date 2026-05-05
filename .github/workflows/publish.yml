@@ -1,0 +1,234 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'manifest.json'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'LICENSE'
+    tags:
+      - 'release-v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: install python deps
+        run: pip install pyyaml
+
+      - name: pick channel and tag
+        id: meta
+        run: |
+          REF="${GITHUB_REF}"
+          if [[ "$REF" == refs/tags/release-v* ]]; then
+            CHANNEL=release
+            TAG="${REF#refs/tags/}"
+            VERSION="${TAG#release-v}"
+            RELEASE_TAG="$TAG"
+          else
+            CHANNEL=canary
+            SHORT_SHA=$(git rev-parse --short HEAD)
+            VERSION="canary-${SHORT_SHA}"
+            RELEASE_TAG="canary-${SHORT_SHA}"
+          fi
+          echo "channel=$CHANNEL" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "release_tag=$RELEASE_TAG" >> "$GITHUB_OUTPUT"
+
+      - name: lint every egg
+        run: |
+          python3 <<'PY'
+          import json, sys, pathlib, re, yaml
+
+          eggs = []
+          for path in sorted(pathlib.Path('games').rglob('*')):
+              if path.is_file() and path.suffix in ('.json', '.yaml', '.yml'):
+                  if path.name == '.gitkeep':
+                      continue
+                  text = path.read_text()
+                  try:
+                      data = yaml.safe_load(text) if path.suffix in ('.yaml', '.yml') else json.loads(text)
+                  except Exception as e:
+                      sys.exit(f"parse failed for {path}, {e}")
+                  if not isinstance(data, dict):
+                      sys.exit(f"{path} did not parse to a mapping")
+                  uuid = data.get('uuid')
+                  if not uuid or not isinstance(uuid, str):
+                      sys.exit(f"{path} has no top level uuid")
+                  eggs.append((str(path), uuid, data, text))
+
+          seen = {}
+          for path, uuid, _, _ in eggs:
+              if uuid in seen:
+                  sys.exit(f"duplicate uuid {uuid}, {path} and {seen[uuid]}")
+              seen[uuid] = path
+
+          pattern = re.compile(r'(api[_-]?key|secret|token|password)["\s:=]+["\']?[A-Za-z0-9_\-]{16,}', re.IGNORECASE)
+          for path, _, _, text in eggs:
+              for line in text.splitlines():
+                  if pattern.search(line):
+                      sys.exit(f"possible inline secret in {path}, line: {line.strip()[:120]}")
+
+          print(f"linted {len(eggs)} eggs")
+          PY
+
+      - name: rewrite update_url and stage artifacts
+        run: |
+          mkdir -p dist
+          python3 <<PY
+          import json, pathlib, yaml
+
+          base = "https://github.com/${GITHUB_REPOSITORY}/releases/download/${{ steps.meta.outputs.release_tag }}"
+
+          for path in sorted(pathlib.Path('games').rglob('*')):
+              if not (path.is_file() and path.suffix in ('.json', '.yaml', '.yml')):
+                  continue
+              if path.name == '.gitkeep':
+                  continue
+              text = path.read_text()
+              data = yaml.safe_load(text) if path.suffix in ('.yaml', '.yml') else json.loads(text)
+              # without this an admin update click silently strips ospite tag overrides.
+              flat = path.name
+              data.setdefault('meta', {})
+              if isinstance(data.get('meta'), dict):
+                  data['meta']['update_url'] = f"{base}/{flat}"
+              if 'update_url' in data:
+                  data['update_url'] = f"{base}/{flat}"
+
+              dest = pathlib.Path('dist') / flat
+              if path.suffix in ('.yaml', '.yml'):
+                  dest.write_text(yaml.safe_dump(data, sort_keys=False))
+              else:
+                  dest.write_text(json.dumps(data, indent=4) + "\n")
+          PY
+
+      - name: build manifest
+        run: |
+          python3 <<PY
+          import json, hashlib, pathlib, yaml, datetime
+
+          channel = "${{ steps.meta.outputs.channel }}"
+          version = "${{ steps.meta.outputs.version }}"
+          release_tag = "${{ steps.meta.outputs.release_tag }}"
+          repo = "${GITHUB_REPOSITORY}"
+          base = f"https://github.com/{repo}/releases/download/{release_tag}"
+
+          eggs = []
+          for path in sorted(pathlib.Path('dist').glob('*')):
+              if not path.is_file() or path.name == 'manifest.json':
+                  continue
+              text = path.read_text()
+              data = yaml.safe_load(text) if path.suffix in ('.yaml', '.yml') else json.loads(text)
+              source = next(p for p in pathlib.Path('games').rglob(path.name) if p.is_file())
+              eggs.append({
+                  'id': str(source.with_suffix('').relative_to('games')),
+                  'uuid': data['uuid'],
+                  'name': data.get('name', source.stem),
+                  'format': 'yaml' if path.suffix in ('.yaml', '.yml') else 'json',
+                  'tags': data.get('tags', []),
+                  'sha256': hashlib.sha256(text.encode()).hexdigest(),
+                  'download_url': f"{base}/{path.name}",
+              })
+
+          manifest_path = pathlib.Path('manifest.json')
+          if manifest_path.exists():
+              manifest = json.loads(manifest_path.read_text())
+          else:
+              manifest = {'channels': {}}
+          manifest['channels'][channel] = {
+              'version': version,
+              'released_at': datetime.datetime.utcnow().isoformat() + 'Z',
+              'eggs': eggs,
+          }
+          manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+          (pathlib.Path('dist') / 'manifest.json').write_text(manifest_path.read_text())
+          print(f"built manifest with {len(eggs)} eggs in {channel} channel")
+          PY
+
+      - name: assert release tag is on main
+        if: steps.meta.outputs.channel == 'release'
+        run: |
+          git fetch origin main --quiet
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "tag $GITHUB_REF is not on origin/main, refusing to publish" >&2
+            exit 1
+          fi
+
+      - name: create canary release
+        if: steps.meta.outputs.channel == 'canary'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git tag -d "${{ steps.meta.outputs.release_tag }}" 2>/dev/null || true
+          git push --delete origin "${{ steps.meta.outputs.release_tag }}" 2>/dev/null || true
+          gh release delete "${{ steps.meta.outputs.release_tag }}" --yes --cleanup-tag 2>/dev/null || true
+
+          gh release create "${{ steps.meta.outputs.release_tag }}" \
+            dist/* \
+            --title "Canary egg catalogue (${{ steps.meta.outputs.version }})" \
+            --notes "Per push canary build." \
+            --prerelease \
+            --target "$GITHUB_SHA"
+
+      - name: create release on tag
+        if: steps.meta.outputs.channel == 'release'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.meta.outputs.release_tag }}" \
+            dist/* \
+            --title "Egg catalogue ${{ steps.meta.outputs.version }}" \
+            --generate-notes
+
+      - name: commit and push manifest update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            git fetch origin main
+            git checkout main
+          fi
+
+          git add manifest.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          # this commit must only touch manifest.json or the paths-ignore recursion guard collapses.
+          OTHER=$(git diff --cached --name-only | grep -v '^manifest.json$' || true)
+          if [[ -n "$OTHER" ]]; then
+            echo "refusing to commit non manifest files: $OTHER" >&2
+            exit 1
+          fi
+          git commit -m "publish ${{ steps.meta.outputs.channel }} ${{ steps.meta.outputs.version }} [skip ci]"
+          git pull --rebase origin main
+          git push origin main
+
+      - name: reap older canary releases
+        if: steps.meta.outputs.channel == 'canary'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          KEEP="${{ steps.meta.outputs.release_tag }}"
+          gh api --paginate "repos/${GITHUB_REPOSITORY}/releases" \
+            --jq ".[] | select(.tag_name | startswith(\"canary-\")) | select(.tag_name != \"$KEEP\") | .tag_name" \
+            | while read -r tag; do
+              [[ -z "$tag" ]] && continue
+              echo "reaping $tag"
+              gh release delete "$tag" --yes --cleanup-tag || true
+            done
