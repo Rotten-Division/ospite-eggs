@@ -1,0 +1,117 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v3",
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/fabric/egg-fabric.json"
+    },
+    "exported_at": "2026-05-02T20:54:45+00:00",
+    "name": "Fabric",
+    "author": "accounts@bofanodes.io",
+    "uuid": "78b02ebb-fec8-49c5-943c-ca4aa117b693",
+    "description": "Fabric is a modular modding toolchain targeting Minecraft 1.14 and above, including snapshots.",
+    "image": "data:image/png;base64,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",
+    "tags": [
+        "minecraft"
+    ],
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
+    "docker_images": {
+        "Java 8": "ghcr.io/pelican-eggs/yolks:java_8",
+        "Java 11": "ghcr.io/pelican-eggs/yolks:java_11",
+        "Java 16": "ghcr.io/pelican-eggs/yolks:java_16",
+        "Java 17": "ghcr.io/pelican-eggs/yolks:java_17",
+        "Java 21": "ghcr.io/pelican-eggs/yolks:java_21",
+        "Java 25": "ghcr.io/pelican-eggs/yolks:java_25"
+    },
+    "file_denylist": [],
+    "startup_commands": {
+        "Default": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}"
+    },
+    "config": {
+        "files": {
+            "server.properties": {
+                "parser": "properties",
+                "find": {
+                    "server-ip": "0.0.0.0",
+                    "enable-query": true,
+                    "server-port": "{{server.allocations.default.port}}"
+                }
+            }
+        },
+        "startup": {
+            "done": ")! For help, type ",
+            "userInteraction": [
+                "Go to eula.txt for more info."
+            ]
+        },
+        "logs": [],
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\n# Fabric MC Installation Script\n#\n# Server Files: /mnt/server\napt update\napt install -y curl jq unzip dos2unix wget\nmkdir -p /mnt/server\ncd /mnt/server\n\n# Enable snapshots\nif [ -z \"$MC_VERSION\" ] || [ \"$MC_VERSION\" == \"latest\" ]; then\n  MC_VERSION=$(curl -sSL https://meta.fabricmc.net/v2/versions/game | jq -r '.[] | select(.stable== true )|.version' | head -n1)\nelif [ \"$MC_VERSION\" == \"snapshot\" ]; then\n  MC_VERSION=$(curl -sSL https://meta.fabricmc.net/v2/versions/game | jq -r '.[] | select(.stable== false )|.version' | head -n1)\nfi\n\nif [ -z \"$FABRIC_VERSION\" ] || [ \"$FABRIC_VERSION\" == \"latest\" ]; then\n  FABRIC_VERSION=$(curl -sSL https://meta.fabricmc.net/v2/versions/installer | jq -r '.[0].version')\nfi\n\nif [ -z \"$LOADER_VERSION\" ] || [ \"$LOADER_VERSION\" == \"latest\" ]; then\n  LOADER_VERSION=$(curl -sSL https://meta.fabricmc.net/v2/versions/loader | jq -r '.[] | select(.stable== true )|.version' | head -n1)\nelif [ \"$LOADER_VERSION\" == \"snapshot\" ]; then\n  LOADER_VERSION=$(curl -sSL https://meta.fabricmc.net/v2/versions/loader | jq -r '.[] | select(.stable== false )|.version' | head -n1)\nfi\n\nwget -O fabric-installer.jar https://maven.fabricmc.net/net/fabricmc/fabric-installer/$FABRIC_VERSION/fabric-installer-$FABRIC_VERSION.jar\njava -jar fabric-installer.jar server -mcversion $MC_VERSION -loader $LOADER_VERSION -downloadMinecraft\nmv server.jar minecraft-server.jar\nmv fabric-server-launch.jar server.jar\necho \"serverJar=minecraft-server.jar\" > fabric-server-launcher.properties\necho -e \"Install Complete\"",
+            "container": "ghcr.io/pelican-eggs/installers:java_11",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Fabric Loader Version",
+            "description": "The version of Fabric Loader to install.",
+            "env_variable": "LOADER_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "between:3,15"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Fabric Version",
+            "description": "The version of Fabric to install.",
+            "env_variable": "FABRIC_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "between:3,15"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Minecraft Version",
+            "description": "The version of Minecraft to install. Use \"latest\" to install the latest version, or use \"snapshot\"\nto install the latest snapshot.",
+            "env_variable": "MC_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "between:3,15"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Server Jar File",
+            "description": "The name of the server jarfile to run the server with.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "server.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "regex:/^([\\w\\d._-]+)(\\.jar)$/"
+            ],
+            "sort": null
+        }
+    ]
+}

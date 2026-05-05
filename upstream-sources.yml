@@ -1,0 +1,42 @@
+sources:
+  - vendored: games/minecraft/fabric.json
+    upstream:
+      repo: pelican-eggs/minecraft
+      path: java/fabric/egg-fabric.json
+      pinned_ref: 5b8481e2c515eff877c301998135c7554a92bb73
+
+  - vendored: games/minecraft/forge.yaml
+    upstream:
+      repo: pelican-eggs/minecraft
+      path: java/forge/egg-forge-minecraft.yaml
+      pinned_ref: 5b8481e2c515eff877c301998135c7554a92bb73
+
+  - vendored: games/minecraft/neoforge.json
+    upstream:
+      repo: pelican-eggs/minecraft
+      path: java/neoforge/egg-neo-forge.json
+      pinned_ref: 5b8481e2c515eff877c301998135c7554a92bb73
+
+  - vendored: games/minecraft/paper.yaml
+    upstream:
+      repo: pelican-eggs/minecraft
+      path: java/paper/egg-paper.yaml
+      pinned_ref: 5b8481e2c515eff877c301998135c7554a92bb73
+
+  - vendored: games/minecraft/purpur.json
+    upstream:
+      repo: pelican-eggs/minecraft
+      path: java/purpur/egg-purpur.json
+      pinned_ref: 5b8481e2c515eff877c301998135c7554a92bb73
+
+  - vendored: games/minecraft/vanilla-bedrock.json
+    upstream:
+      repo: pelican-eggs/minecraft
+      path: bedrock/bedrock/egg-vanilla-bedrock.json
+      pinned_ref: 5b8481e2c515eff877c301998135c7554a92bb73
+
+  - vendored: games/minecraft/vanilla-java.yaml
+    upstream:
+      repo: pelican-eggs/minecraft
+      path: java/vanilla/egg-vanilla-minecraft.yaml
+      pinned_ref: 5b8481e2c515eff877c301998135c7554a92bb73

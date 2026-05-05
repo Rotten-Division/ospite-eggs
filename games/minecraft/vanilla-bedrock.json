@@ -1,0 +1,154 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v3",
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/bedrock/egg-vanilla-bedrock.json"
+    },
+    "exported_at": "2026-05-02T20:54:45+00:00",
+    "name": "Vanilla Bedrock",
+    "author": "parker@parkervcp.com",
+    "uuid": "a03036b8-8c1b-4c8a-80be-018baad3dcaf",
+    "description": "Bedrock Edition (also known as the Bedrock Version, Bedrock Codebase, Bedrock Engine or just\nBedrock) refers to the multi-platform family of editions of Minecraft developed by Mojang AB,\nMicrosoft Studios, 4J Studios, and SkyBox Labs. Prior to this term, as the engine originated with\nPocket Edition, this entire product family was referred to as \"Pocket Edition\", \"MCPE\", or\n\"Pocket/Windows 10 Edition\".",
+    "image": "data:image/png;base64,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",
+    "tags": [
+        "minecraft",
+        "bedrock"
+    ],
+    "features": [
+        "pid_limit"
+    ],
+    "docker_images": {
+        "ghcr.io/pelican-eggs/yolks:debian": "ghcr.io/pelican-eggs/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup_commands": {
+        "Default": "./bedrock_server"
+    },
+    "config": {
+        "files": {
+            "server.properties": {
+                "parser": "properties",
+                "find": {
+                    "server-port": "{{server.allocations.default.port}}",
+                    "server-name": "{{server.environment.SERVERNAME}}",
+                    "gamemode": "{{server.environment.GAMEMODE}}",
+                    "difficulty": "{{server.environment.DIFFICULTY}}",
+                    "level-name": "{{server.environment.WORLDNAME}}",
+                    "allow-cheats": "{{server.environment.CHEATS}}"
+                }
+            }
+        },
+        "startup": {
+            "done": "Server started"
+        },
+        "logs": [],
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\n\napt update\napt install -y zip unzip wget curl\n\nif [ ! -d /mnt/server/ ]; then\n    mkdir /mnt/server/\nfi\n\ncd /mnt/server\n\n# Minecraft CDN Akamai blocks script user-agents\nRANDVERSION=$(echo $((1 + $RANDOM % 4000)))\n\nif [ -z \"${BEDROCK_VERSION}\" ] || [ \"${BEDROCK_VERSION}\" == \"latest\" ]; then\n    echo -e \"\\n Downloading latest Bedrock server\"\n    curl -L -A \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.$RANDVERSION.212 Safari/537.36\" -H \"Accept-Language: en\" -H \"Accept-Encoding: gzip, deflate\" -o versions.html.gz https://net-secondary.web.minecraft-services.net/api/v1.0/download/links\n    DOWNLOAD_URL=$(zgrep -o 'https://www.minecraft.net/bedrockdedicatedserver/bin-linux/[^\"]*' versions.html.gz)\nelse \n    echo -e \"\\n Downloading ${BEDROCK_VERSION} Bedrock server\"\n    DOWNLOAD_URL=https://www.minecraft.net/bedrockdedicatedserver/bin-linux/bedrock-server-$BEDROCK_VERSION.zip\nfi\n\nDOWNLOAD_FILE=$(echo ${DOWNLOAD_URL} | cut -d\"/\" -f5) # Retrieve archive name\n\necho -e \"backing up config files\"\nrm *.bak versions.html.gz\ncp server.properties server.properties.bak\ncp permissions.json permissions.json.bak\ncp allowlist.json allowlist.json.bak\n\n\necho -e \"Downloading files from: $DOWNLOAD_URL\"\n\ncurl -L -A \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.$RANDVERSION.212 Safari/537.36\" -H \"Accept-Language: en\" -o $DOWNLOAD_FILE $DOWNLOAD_URL\n\necho -e \"Unpacking server files\"\nunzip -o $DOWNLOAD_FILE\n\necho -e \"Cleaning up after installing\"\nrm $DOWNLOAD_FILE\n\necho -e \"restoring backup config files - on first install there will be file not found errors which you can ignore.\"\ncp -rf server.properties.bak server.properties\ncp -rf permissions.json.bak permissions.json\ncp -rf allowlist.json.bak allowlist.json\n\nchmod +x bedrock_server\n\necho -e \"Install Completed\"",
+            "container": "ghcr.io/pelican-eggs/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Allow cheats",
+            "description": "If true then cheats like commands can be used.\r\n\r\nAllowed values: \"true\" or \"false\"",
+            "env_variable": "CHEATS",
+            "default_value": false,
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "in:true,false"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Bedrock Version",
+            "description": "The version of bedrock. (Ex. 1.7.0.13)\r\n\r\nDefault version is latest.",
+            "env_variable": "BEDROCK_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:20"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Choose World",
+            "description": "If you have multiple world files, Enter the World Folder Name you want to Select to Start the Server",
+            "env_variable": "WORLDNAME",
+            "default_value": "default",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:100"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Difficulty",
+            "description": "Allowed values: \"peaceful\", \"easy\", \"normal\", or \"hard\"",
+            "env_variable": "DIFFICULTY",
+            "default_value": "easy",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "in:peaceful,easy,normal,hard"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Gamemode",
+            "description": "Allowed values: \"survival\", \"creative\", or \"adventure\"",
+            "env_variable": "GAMEMODE",
+            "default_value": "survival",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "in:survival,creative,adventure"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Server Name",
+            "description": "The name for the server",
+            "env_variable": "SERVERNAME",
+            "default_value": "Bedrock Dedicated Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:50"
+            ],
+            "sort": null
+        },
+        {
+            "name": "ld lib path",
+            "description": "Dumb reasons to need this",
+            "env_variable": "LD_LIBRARY_PATH",
+            "default_value": ".",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "string",
+                "max:20"
+            ],
+            "sort": null
+        }
+    ]
+}
