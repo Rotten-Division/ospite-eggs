@@ -1,0 +1,88 @@
+{
+  "channels": {
+    "canary": {
+      "version": "canary-f97aba0",
+      "released_at": "2026-05-05T17:09:19.571390Z",
+      "eggs": [
+        {
+          "id": "minecraft/fabric",
+          "uuid": "78b02ebb-fec8-49c5-943c-ca4aa117b693",
+          "name": "Fabric",
+          "format": "json",
+          "tags": [
+            "minecraft"
+          ],
+          "sha256": "57e7dcde4d4b1ca4bcf01f68002e66d1fef12d493d2656d103a1f171efda58f3",
+          "download_url": "https://github.com/Rotten-Division/ospite-eggs/releases/download/canary-f97aba0/fabric.json"
+        },
+        {
+          "id": "minecraft/forge",
+          "uuid": "ed072427-f209-4603-875c-f540c6dd5a65",
+          "name": "Forge Minecraft",
+          "format": "yaml",
+          "tags": [
+            "minecraft"
+          ],
+          "sha256": "c3e9c3316c4366a91c5a5cb4e86f44101b7c09add45afc5ac8db416b327359d5",
+          "download_url": "https://github.com/Rotten-Division/ospite-eggs/releases/download/canary-f97aba0/forge.yaml"
+        },
+        {
+          "id": "minecraft/neoforge",
+          "uuid": "e23e092f-b803-4f34-82cf-2d6518c6351a",
+          "name": "NeoForge",
+          "format": "json",
+          "tags": [
+            "minecraft"
+          ],
+          "sha256": "2bad83cc743db5799e8ae3ebee6061bb5fb9f2dc3448ac540a72c974cc4c53d9",
+          "download_url": "https://github.com/Rotten-Division/ospite-eggs/releases/download/canary-f97aba0/neoforge.json"
+        },
+        {
+          "id": "minecraft/paper",
+          "uuid": "5da37ef6-58da-4169-90a6-e683e1721247",
+          "name": "Paper",
+          "format": "yaml",
+          "tags": [
+            "minecraft"
+          ],
+          "sha256": "fcb5e2d7de972b185b065977d8e2ffc71a50381849db4d69a26bb80529524275",
+          "download_url": "https://github.com/Rotten-Division/ospite-eggs/releases/download/canary-f97aba0/paper.yaml"
+        },
+        {
+          "id": "minecraft/purpur",
+          "uuid": "49adec15-ccfe-45c3-ac3f-2fc20582739d",
+          "name": "Purpur",
+          "format": "json",
+          "tags": [
+            "minecraft"
+          ],
+          "sha256": "b8023091dad6dadeb114ea6737fa60c76ee97771e9268561e22ebb1cb0f27455",
+          "download_url": "https://github.com/Rotten-Division/ospite-eggs/releases/download/canary-f97aba0/purpur.json"
+        },
+        {
+          "id": "minecraft/vanilla-bedrock",
+          "uuid": "a03036b8-8c1b-4c8a-80be-018baad3dcaf",
+          "name": "Vanilla Bedrock",
+          "format": "json",
+          "tags": [
+            "minecraft",
+            "bedrock"
+          ],
+          "sha256": "910b6159e39993be62dd9c9235a870f20cd40a1b6378f9d1560e786d6eaba67b",
+          "download_url": "https://github.com/Rotten-Division/ospite-eggs/releases/download/canary-f97aba0/vanilla-bedrock.json"
+        },
+        {
+          "id": "minecraft/vanilla-java",
+          "uuid": "9ac39f3d-0c34-4d93-8174-c52ab9e6c57b",
+          "name": "Vanilla Minecraft",
+          "format": "yaml",
+          "tags": [
+            "minecraft"
+          ],
+          "sha256": "8f13379384fd64396ef25a3a26b44df511819e1221819933e8a791e0c07b0e68",
+          "download_url": "https://github.com/Rotten-Division/ospite-eggs/releases/download/canary-f97aba0/vanilla-java.yaml"
+        }
+      ]
+    }
+  }
+}
