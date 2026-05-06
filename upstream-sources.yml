@@ -1,4 +1,5 @@
 sources:
+  # minecraft
   - vendored: games/minecraft/fabric.json
     upstream:
       repo: pelican-eggs/minecraft
@@ -40,3 +41,22 @@ sources:
       repo: pelican-eggs/minecraft
       path: java/vanilla/egg-vanilla-minecraft.yaml
       pinned_ref: 5b8481e2c515eff877c301998135c7554a92bb73
+
+  # terraria
+  - vendored: games/terraria/egg-terraria-vanilla.json
+    upstream:
+      repo: pelican-eggs/games-standalone
+      path: terraria/vanilla/egg-terraria-vanilla.json
+      pinned_ref: 1662b503bf431ef4c90f1b96b6dde78f6b0389e2
+
+  - vendored: games/terraria/egg-tshock.json
+    upstream:
+      repo: pelican-eggs/games-standalone
+      path: terraria/tshock/egg-tshock.json
+      pinned_ref: 1662b503bf431ef4c90f1b96b6dde78f6b0389e2
+
+  - vendored: games/terraria/egg-t-modloader.json
+    upstream:
+      repo: pelican-eggs/games-standalone
+      path: terraria/tmodloader/egg-t-modloader.json
+      pinned_ref: 1662b503bf431ef4c90f1b96b6dde78f6b0389e2
