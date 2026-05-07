@@ -165,7 +165,7 @@ jobs:
           lines = ["automated sync of upstream eggs.", "", "| vendored | upstream path | old ref | new ref | content changed |", "|---|---|---|---|---|"]
           for u in updates:
               lines.append(f"| `{u['vendored']}` | `{u['upstream_path']}` | `{u['old_ref'][:7]}` | `{u['new_ref'][:7]}` | {'yes' if u['content_changed'] else 'no'} |")
-          lines += ["", "vendored uuids and ospite tag additions are preserved across sync. publish lint runs on this pr, structural breakage blocks the merge."]
+          lines += ["", "vendored uuids, ospite tag additions, and brand image overlays are preserved across sync. publish lint runs on this pr, structural breakage blocks the merge."]
           print("\n".join(lines))
           PY
           )
