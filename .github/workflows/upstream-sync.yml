@@ -98,6 +98,11 @@ jobs:
                           upstream_tags.append(t)
                   upstream_data['tags'] = upstream_tags
 
+              # image is locally owned. our brand icon survives every sync,
+              # upstream eggs that ship their own get overwritten by ours.
+              if vendored_text and isinstance(vendored_data, dict) and vendored_data.get('image'):
+                  upstream_data['image'] = vendored_data['image']
+
               if suffix in ('.yaml', '.yml'):
                   new_text = yaml.safe_dump(upstream_data, sort_keys=False)
               else:
