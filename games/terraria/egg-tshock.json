@@ -1,76 +1,96 @@
 {
-  "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
-  "meta": {
-    "version": "PLCN_v2",
-    "update_url": null
-  },
-  "exported_at": "2025-09-16T16:52:54+00:00",
-  "name": "tshock",
-  "author": "parker@parkervcp.com",
-  "uuid": "abebe204-ef9f-4498-a009-e5a50ed7fffb",
-  "description": "The t-shock modded terraria server.\r\n\r\nhttps://tshock.co/",
-  "tags": ["terraria", "tshock"],
-  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAfeklEQVR42u19e5wU1ZX/99x7q6q754E8ZSErMdGYuBuTjVkl0RXNJvJRwAiCGo1ijFmj2fWxis9FReNb5IeaGI0kPkLE+MgvJAFf64qPFY2SGAXER0QBRQWGefR0d9W99+wfVTVd3dM9L2Z0gD6fTzEz3U1VdZ3vPfe8D1CjGtWoRjWqUY1qVKMa1ahGNapRjWpUoxrVqEY1qlGNalSjGtWoRjXaAYl2su8qAHB07KwUPwO7MwGAYqYT0U694pm55JnQToJ4C8BTSp2itf4agMbotZ0NDRbAOwB+DmAlgB1+OcTMzwgh7rHWThsxdBcM26URxhpQP/KfB/G+ywAEAcZYvL3+fTDzuwD2B7CRdgLmpx1HLQwCPfX7M0/Q5115LW3KpyCJO7OCyjnJ1TeT5GcpPhN1zV0O/2FOrD3mrlHSD9oKESHQGvX1Hv773gXmnHP+03Uc55ggCH6jeqlAGQAyIU548DPf+VUQBFN/ePKJ+ozrF6hzl+XxYauGo2Snu+eIf5T4u9OKrcBg5RHSDQpuWlYHAAOFrEF7cwATJMDHHN0GdYCByxnPZVioAppKLxMB1jJaC8CNRzbCBvlYF7IAoHohRQwJATCbhCIhByEQksxfGATB1NNPmanPuv4OddrDbdiS9VHnSRhjiryKGc2RidDBeCo++MSKpCKvICWQqnOQbgSkY6s+CWYgKGgwa7CNpUAZc21nAHAZELhcLHAVecWh2A+MhW+A+VN2xdrf3qQvuHi2IqLVnuf9j+/7JHqw8gmAB+BctvZRZv5FOu1OnTFjhowkAkdAokHE/LqY+aeePFOfef0d6kePtKIpF6A+pWCZQCAQRUf0O4hAovg64tfKjhAaBCkJXr1Cql5BShEhp/JhNWB8dHwmvk7HNaLXOl1PdL5+xz2jynsU3ptlILDAzVN3xepFV5sfnH6msta+wcxHtra2bu6JPhI/0MsBzN5jzz2xJZvHlvfWAcD/plKpW0eMGPHg+vXrc4NAIsT3OkQpda/W+rDTvj9Tnzl3gTrzv9vwUbOPOlfCJHT/ThKg0+/Usd0nt/d4C3czAnVDHbhp0aV5yQwEeYtsU4BcqwEsJ8R5csWHf3AnkV8u5rmifhD/KQjwtUWggflHjsIrC68xZ866UAohV7quMymfz78TPy/ZneifMGFC6p133pm37777Dv/fZ5813515Eqfqh+C1la/u1trSMq2lpeVwz/Owxx57vL558+Z8AgifFPMf0FpPPO+sf9c/uvpWdcZjrdic1cg4XTA/WogdL1K8GgEhyt6PPuOmBNJDFFIZFX62S9sbCAoGhXYL7dtw0VcTuNSFusGVEFv6eSkAP7CQgvDTo0ZhxT3X6LNmXaiklKtd1zksn8+/m1ioXTIqPv2I5ubmcyZMmNBw/PHHi6GN9fJbh0yg7xx/vK1vHGL/9tZbY5q2bJm8efPmaa7r1g0dOvRv7e3tLQkg0ABLhCTz79daf+u/zjtbH33RfHXakq1ozRuklejM/AQzk4s3FKGlSlQ5I5RDSDUopBoUhOx+57PaopA10DkLY7gUbGWSpwME3HubUgogH1g4UuDWI0bi0ZvON+fPvlxJKVc5TgnzTfLhdf10hWAA0FoDAIwxMMbg78eOEZdfeol88U8v2uuuv8Hs9fkv7OX7/jWbNm1aLqW8csiQIbtHF7I9uU5/MX/2+WfrGRfcqE77/SbkAoOUIyqv/PLnF+/HZRp0+QdJAG5GwquXkIp64HkDrAa0zzCGIRLSgqos5qSFWm6BVJMeUgDtvoUjCLdMGYEHrztTz/7xdVJK+YwxZmIl5qM3jIn3OCEEpJRgZhhjsOuuo8Ssc8+RL774J3vHggVmny99eTdjzEXNzc3PSynnNzQ0fG6AQFAu9r918bln6WmzblSnLt4EY4F0JbFfvvIpEvkJMZ/EQsnvkuCmJVL1Co7Xs6/DlhH4FjpgsC1er2s09s5zFDM/7Uj8fNpI/Pa6s/TVc29SjuM8Y4w5AsD6SszHtjAl1DSLQKivqxPfP/lk+cILz/OvFi4048d/baQx5ozW1tYXAJzRz65XSjD/N1rrb86edbaecdE8dfqSzTCW4cUrv8IzpHLmd7XqE/JaOoRUg4Sbph4bzyZgBHkLq23RjOypO5Aq6ABleoAUQFveYFhG4Y7JDfj1Ff+hr547X0kplwVBcASApmrMR3+synIgeK5Lxx93nHz66af4d4sX67333nsIgBvr6ur+IeFD64/AztBI7B86e9ZZ+uiLb1T/uWwrpEdIuTI0qato+8lTVWUGFaUeg6GUQLpBwcvIbpW+mFnWANq3CPI2sfrRGQHUi29ORSwoIdCWMxhe7+DWSQ2Ye85Mc+28W5RS6hFjzNSI+aIa83vjCOoVEKy1ICI6YsoU1dLcbE444QRpjPlSFICQAPQ2AsAVJO6Kxf70C+eps5/aCqdewclbtG7VnVd0QqQLQQAxKPbBJey88m0CBEhFyDQqpBpkyR7e3V1abWF8C44Uv9CPxkXTL3YoMScdgcVVwhx5J6mTg8ghoLndx8gGD7dNqsf1Z8/Uv7hnkXJd927f908BECS2SQw4AMqBECuL6XQaANgY4/XD6SUAk0qlxufz+Sn/dvJMO/2ieerMJ5qQHubAFQItraaCgldkPjOQ9xkkRQVFjEoYH3v9XCngGwHTXhJO7VYCBHlGro2hA4ocQCFrmcs9gOiQNB0ivsTrRyX+AkGhtr/X6Hpc+S8SV//HifqXCxcp13V/5fv+ydGK75b5AwKAEm5JCWst+tsU9H1/HwA84zsn8G0rLbQDpJRA21aNIGfBljs5ZogABoG1xeyv1WGoKiAwzDKMCpWBhjoePjEAwSAK+hB7jxlJXe9+3Mu9gBm+lRjtNPMFJ53C//+PD8cr//sJhdv25FQDCoCBSsCwNnQ9F7SB4xIydQp+geHnDKy2pbY8Fe/DWobjOBgrm3D69EPx/kebSQpJFTzsXcd6qZcx4jLTjasE/aiL98s9g0IQmprbsGXrVkgp5/u+f1Zi87I9fZYDDoCBBRegXAIzo9CuoQPu7NWroAe0B4bfXLuONjU1vw/g5Whr4e0wy6nFcZylQRAsKLOOsIMDwEZOmdCRqQsWtr1M9HNnFy5F+7eSwqY8VxLRE0T03dmzZ4vLL7/cbldPwFoSQnAQBElB0evvoLbf7L7QCNY+kM9aSN2VW506+V6YGcysAGDOnDm0vaWHRUCPIhXVzbwdewsAoH0DP2eQkrLEw5Y055LWQFkWJFdysWxHxP3hTt1+vzIzTADYyM4u8a+UmXbUsWp27qzg7iQAJcQKAWCttexH373qZRZS17kFbJOKdjGTp2PlU6kHjanG/i4kQFwwYCJPXQBAjx8/vqmfxGNbdN589LO7I842EtVum5nBttS+pgquUypJ8KpRJQlAAOywYcMac7ncBK31iHhfXLp0aZ0QQmyDPU9CCBDRNxzHSUXXtN1lMSulmoUQz2az2Q+qOpK4zEfOyQSPznH9GgIqAyCOFO23ZcuWuwHslfxAZGZwoVDoU0q77/vCWgvf908FcGpP/1903fcAzATweDV9hcq8t7HoryQJBjw1ZTsFgJ0xY4a8//775zY2Nu51ySWX6M9+9rNCa92RYBgEgRg1ahSYuceePSFCfh1wwAFYtGgRlFI91rSFEPjwww/tZZddNmbjxo2XTpgw4clly5aZTiCg0kQJTih9HSneZfF+4hoCygHAr7/+egOA3b/+9a/bc845R/aHsIyBMm7cOIwbN648xtYjWrx4sV2yZMnotra2OgDN3ZoGVJa5KYrMr1EXOkA2m3UAkFJKGGPYWtuxgmNlSwhR8lpvihGNMT2WHFEoGWvXrrXPPvusBPDKihUrmhNKanXHfHkWD1GndKo+4HDHB0Cc98fMkFIiUtr6zWOllOrV54UQuGHuXNHc3EzpdPqeXC5XWf+IlD7RkSufqLgqS+ihpKOgtg0MTkdQLHleefVVc8/ddwsienK//fb7fVfuTkKiHqOK9y+Z61ej7cATeOPcudTe3s6ZTObHy5Yt013eJ3W2CAhUVPx2uj4Y2ykArLUgIbBq9Wpz3333CSJ6vK2t7Ykuc9oikS7KFb1Y4xeISquibUIAJGtMH7QSgAD8+IofUy6XQyaTuZaIuk0i7WzvU2WnjwCUIyBqwmDwAcAYAyEEnlu+3Nx3331CCPG7bDb7RHcZrcnoBZV5/8qDQ1KGtXxC1RAw6AAQWxzXXH0NWWsK9fX1V/XGZ0dI5Pd3VM8UtT4hCU5KhEWcxQywjsSKqiW9g+P4WKOBn8jql1LiueeeM0uXLpFSysUtLS0v9CaxsdwjSEW3YJg25hHcjIJQYSo4dy59M4N4kQ5oxbVKrAIQEYwxFV2+sX3eF0dQlBlc8b3YyXTVVVdREASmsbHxupaWll4pDhTV7DEnloyIqmUdgpuSkE6YFFqsDRCQUtLpp5/uLVu2TGUymUGVEhYEAe27777B7bffHlRrYNNvABg2bFgBgPWDwEopaSDqBLqiJ554Qv/xj39UUsp7WlpaXuzN6k96/KjMHUwScFISTjpU/mz0dqCNaGnLwhhz+M0337xyENqJDEC89NJLW6WUS4wxVwAo9Eoq9gIA9MILL7QCeGP58uc/9V+XzrG7f+5z0MaC/QIIgO8X6NPjxmHKpMN7HBCKnTqrVq/GY489DtfzwGw56awnEigU8vjpLbcoZvZTqdS12WyWepwXxEW3LxHASeYToFwBJ0VhFW+kIBhtMCTt0uH/ehA+2tLSoKRs4IHyDFLfsp3CUjSFDz7ajJdefuWfhBBfttYeizCnol9BoBKa9vktzVtvv/Lyy75YQTnkKVOmUG8AED/UP69YgbPOPKO7R7IRwJxsNruyZ1/QSgBMQsLXYTOEOOEjvoBQBC+t4Liio0iDBIHJYkX7EBw390EYCxZEzNzP/RIjYd3RC6hKJ4+iHoKSekNB4Jxv6PPDFN999bn2hvk/mRQVwU4HkOtPEKiI+QTgT3vvvff+69at+0qhUBgFwCqAvVSqsbmt7aZMJjMCAFMvgwSe51kphHAd5zqS/CQzXKIw20drCMdxcg0NDS9v3Ljxo57mtQtHbLWBJb+9Dbt9WuHF9Rr1KYm4AJdkuO+rlECyC5IgoHFXF7/eZGHD7lwDp2lboNAedgVhy4luYAgLRTn8SQpI10t49arjXgWB8nkL+Uqe5l9yi5BC6Gvn3XyY67q3+75/UoJn3F9WAAMQq1at8gEsj9/0ARwwYULdY489Nq+aItcTwWashbb2z0EhWIrOCSPIZrPoIaotAKTd9PJskA0uu/RS+asHv8TNnxlLy9Y1Y0SdA20Yjkdw0wRZwcZRLmG4pwY8M0QXLPJgBFEMs1gmxkUAgOGmBeqHOpCuKJEgrCXea8vhh4s34ReX3qSam7bon9258HjXdW1UAqb7AwSi7OHGSaEyzhZ67bXXhvTTKslE5/Win8mjpxUtDEBks9mVQohL/vyXv4hjJk/kU0at52+M2wWbswHSaQEnJaBcWbVez1iGsRiYwwCFvEW2zSDfbqE1oA2gDUdH+HdgGJAC0lNgIUr+v19gtLcZpFwJ3zJ+9IctOPuGBerk7x6rfd8/wXXdO/rLVyCqZOKa+FBKmX4s5zFVDu7leYS19ppUyr3g1dVrxPTJh9qTR63nb+y+C1q0QaZOfWJ6PUdNIVgnegFWKGoRkuCmBdxM6TYFAoxmFHIWhZxBXVpia8Hg9EfaMev/3almHne09n3/RNd1b0ksWtp56gKKIJD5vH+t67qzVq15Q06fdCifNGwdH7TbEDTlAzjyk0GANYygYGE0VxXQRIDjhZIq2W+AI/3A+BZ+zsCEHeXQkFbYktM487E8Lp63QH37sG8Z3/dPc13nJ4lqYNqZAIBIckjf929wXfe8la+9LqZPnmiPT7/D40fUY3O7D/Uxfzu2YTs4E3DRKVWhvFdIwE0LOJ4sjWJyqDsEOQPjc2TmEgwzGusUPmgrYNZTFtf/8gE5eeI3je8Hp3ueNy/RD4B2JgDEIFC+71/vuu75q9a8Lo+adKj9jvMO7z+0HpuzGupjDP/pgKH9uFahgnSIG06kBJyUhCjLvmTL8AsWhZxFR7eQ6BdjGEMyDt5uyuH8Zwjz7npQfvPgA3WhUDgrlUpdmgDBTgUARNqw9H3/ung7OGrSoXyMs5bHj6zDR20+lBx4v53VjCBvokbQkXOyzAdAAKRLcOsklEOdpIfxbXH7KGsYwAiV113qHLyxqR2XvaBw0y/vU1/9p31MPp+/LOW6l5Q1895pAJCUBDe4rjtr5WuvixmTJ9pjxNt80Oh6fNQWDOh2wAAC30ainys4fMItQToCXlpAuaKTsLaG4ectdN6ATZXmVhRaCsMaXLz8XiuuWzUUdz2wRHzly180ed+f43neqfGz2NkAEEuCGAThdjB5Ih9ZWMUTR9djU1ZD0cDEa1lzyHzLxQbOiexkAkGIKCqZlhCSSv+/ZVhtEeTD81ToWVnyt7GMYfUuXni3GTe+PoJ+/dASsednPm0LhcJPPc+LfQRyZwNA+XZwzuo1b4jDDv0mDmp6yR7+qTp80ObDgBFY22+Hby3yvkEhMPCthebie9rasF07W8AlqAyBFcLXk4dh5PIGuXwAPwhfM2UiJhmuYADaMkbUu3j27S247Z1R9OAfltKen/k0CoXCz4UQx/VUJ1DY8SjeDm5MpVKb17/3/i+mHjGZ/rh0qU3v8WXxxFofDY7sH0c6h6Jbs0VGKrAoFflJHUB5Ao6SnTkSOaZcCKRSCnDDbaQt76OguWQ2QSe0MzCq0cOSlZshxR70m8VLeMYRk+itt9fOzWQyT7S3t2/szlu4IwKgQxLk8/m7UqmU2fD+xl9OOuxw9bPbfhac/ek9yeigX+oeGAA5BKR60kWKuz5HOjQRCgVfjhxSR2swDlc/n0WdK2BEWNIWA6EjFZ4BbYFdd/Fw/4qN+OxhXxD/ftqpfNasC0Y7jvMPCINsOyUAOiRBPp//leM4vOH992+ecsS3h9alU+BBWhgihEAQBDj0kANx5m0PlxgRzNXTQhhAfVphfZPFSOnE4XgXO3qLmJ5KgiAIFrqu+6LW+uhsLj96kI6Mi4fRHJ0PzEjNcVfJkPvdRX2YAU+JDqREGdU7PQBiSSB8318D4IrBPDhSCAFr7YGCaKQoT4mn4kyj8m1gWxoG7QwAQMJfLnhwyn8CwAceeKCzbNkyVV772KmekYpdx5m2bRihAHaqqZm6i4jkJ37stddepZFRourdzssroVADAHboyd7UbQf5GgB2RARQ2QzDEi8hbfs82hoAtrfmyChvgrFtY2ZrABjM4r9T08vSkUNJIPTVuFG1R43B3Q21fIpcR9kb90uz2BoAthMgUCdLkMpmTVBNB9jR1P9y0U7UzRYgahJgh7QBY6lfkiVUNs28r9tBDQCD2gYsnWJUcZTMNjoCagAY5EKgY/Unhl6gLO2sOO6+BoAdS/onO51xZYWPeNscQTUAbC8jcpILnIu9kBlhZbFUfTMEagAYzCqAKDP9Y/6XdUhXDsFNq8R2UQPADuT9DdW/5OqnRISYCHBSBE+KsAci1wCww7mDS5w+sehngIghXQGvTkHlubTItAaAHYT5VD15TCiBVEbC8QTI75seWAPAYJ8NmAgEJHUAIQGvXsKrExCS+hwTUB+3WdsH1wX30rVN26uuv2bNGpnw/EQ9jgEjit7/sK0ewctIpOpkxS4ogxUAcbpTMECNEjtazNB22hf+mWeeMUSkS8acxh1QE40lnJSImE/bHBD8OABAUkq4rts4bty4kdlsNi2lNN2IPrbWimHDhmVfeeWVph6CxLiuu7fv66OY7bjtEQDGGAKwW6AtojLDjmxgiFDsO56AW6c6mF8uXnub8zrgAPB9XxhjkM1mL3nzzTfP62HRIgMQGzZsyAJ4EsAcABuqbAkSgJFSftv3/TsB7DJ8SAMs2090rDH6mBZujMGwxjQcSvS9VAShCG7cVaQT8xmWGXlt0eCquK8AfaIAiMXwmDFjMGXKFDiuO7JSpzGq0mNQKoUPNm7Ec889t4cxZhiA6RWesQKgXdc90vf9RSOGD/PuvPNO/Zkv7U860H3bCqgs6tYLGcs9dcd3cb7AWjE049KLrRbSEXDTEqQIUgLKkZ3mHRCFjSmaPtQY/wWBx996EwB8IcTGTxQAcV/hgw8+GAcffHBftyo+5JBD7JNPPvn18ePHp5YvX55LsEgB0KlU6oB8Pr9wxPDh3kMPPWRX73aQmr+qHXWuhOXe9rNjGG07NXcUDkFK0SV3rbbQAYMNd1m9A0FwXIJUXZyPLSxpDB/uQDmRHiCoqkm4bkMO5+43HPln7jW33LZAEtGKsWPHrmxubu5WKKmPp3MWA8zUqSFOJViEcwrhui6WLF1qXnrpJUVEL0+cOLGwfPnyEuZnMpl929vbH8ikU5nf/fZBu2L0QeKBN1sweqQL24f6D2MZyDOsKUZeBBGcNEEo7jLmogOGzZqwu0eFlc5x+1pHwKuTUefy6mKISPXI5Hl7XTt+tM9QDPnr/Xb6id+ThULhPcdxTol6Pnbbe1F9fPYsVUl7KXuQWsN1XTzy6KP22GOPVa2trU2O45w/Z86cjuqeDubncn/wPG/0b39zr/3buAnigddbMHakB216FxixlmE1YKKpxYSiXS0cghDhWJquOoOZAoM1QNWm2zGgFMFNCShH9EsP+bXr2jHz80PxqbcesYcfe4LIFwrvO44zJQiClT1tJzuoUsK01lBK4eGHH7bTjzpKtLa0NEkppwVB8HLCxjeO4/xjey73B89xRv920UKz5ctHigVvtGDM8JD5PfUuMEdi32foggnFf+I9khR286Cuz2MChon7AlaQbOEw5LBHQLUGlr1l/t/ezeLYPYbii+8/YafNOEbkC4WmdDo9NQiCFQnTefvxBMbMf/TRx+zRRx8t2tratqRSqSPz+fzTCcvBuK67ZxAEi5WSox/6zb2m+Z+nyZ+tasGYER6M7XkzR2YGbNh9y2pGUj/lqNW8cgnKEV362I1h6MDCmtKGz1xM4wCBoRwJ5Yo++etLGCYIa9dnMWX3YThY/8X+6/QZYmtz81bP86blcrnn4+1xu0oKjZn/yCOP2KOOmiZaW1ubUqnU1Ij5KsH8zwWBfoQZu999+62msP80eeuqFoztBfNLFD7DsAawXLofEwFSEaRDXTKMo+5gJqi87cVzjIUiKI862e69Zj4R3n2vHYf+XSMm42WeMmUybdq8xfc879hCofBkb5k/KCRAQuybGTNmyLa2tibP86bl8/mn4tnGHczX+mFmu/s9C243Qw47Rc5b1RqK/T4w39qQeajQeEEqgnK73vdjzd8EtrrzJfLZK08kZhb0feW/+3479hvagBn1b/Okb03id9dtgOM4/1YoFB7pC/M/cQkQM//X9y4y06ZNk5HY/3YCzQzApFKpcVrrP7C1u991x8/M8Mk/kPNWtWL4Li56q+yzDVe8NRVTLCFkaKKJbsw+tmFP31jrT6Znd0wqFWFrOOVEAZttYP7GzXl8dZd6nDJqAx89dbJdu26D8DzvtCAI7uor8z9RABSZf6+deeKJMpfLbUin04cn9nwbMX+3IAiWWmv3/Mm8G8yYqafKG15txYhd3NI8uV6YpGySw4WL8XUhwtUvukuv4nD1W43SlrDUeRtRDmFbRtUpSdi4KY/dRQo/HPMhH/vtiXbl6jUy5boXFQqF26NnpbE9VQebIvPNSTNnCmP0hkwmMymhxNjoGOf7/lJjzBfmX3+t2WfmOXLuX9swYqgTKnJ96OTNlmFtsZcvUTy+Jl79VNLAuZrZqDVgOiZUdHbKC0lQrgj1COr7yv/gowLGSQ/n7dnMP/jONPvXla/JVCp1Yd73r47d4AMaDYzn6sUTxbY12maMgeM4WHjvveZ7M2dKrfWGTCZzeDab/WtClBGAeiJ6yFq79/zrr9X/fOp56sq/tKGxUYWtUkpGhPUi0zZS+EiiQymLFT2pKOrfWx1axLH2Z1GtKFOIUIdQLqEklNeLALgUhA835zHCKpz/hTb+4TFHmKefe155nndFPp+/pj+Y3yMAOI5jAATGGO5u+ldPXcS/vneROWnmTGm03pBOpyeXMT+O7B3k+/5XrrjsMvPV089Tc1a0o77BA4NguA8ZsBSufk0CLBhCCVCkmJHtcPvBoptptRQOfjBE0eSizr558gSEK2BF3xzgJIG2gsXfSQ8X/6OP804+zv7Ps8uV53lXFQqFS3pj528LABgAvfHGG5uI6LWnnnpqzO9//3t/7NixUuveB1ri+YBPPf00X3jBBUoHwYZMJjOpvb395SpKDANANpfjTEuzufQzoJTDvC3tvdiWhktJJGuuIqtd9ECHsKg4DKp4XlT33fdQBOR9S0NNK5///VOweMmj0vO8mwqFwsX9PUiSehJnBzAFwCIAGaVUn/vsERG01gDwluM4R0UevkrMp2jEzOMAxo8ZNQKOo2Btv/VX6Dpgs43n6Om5upaUhJa2djQ1N0NKebMx5oyBmCJKPfwMO46zrzHmYGvtqG0RP47jrHFdd2k2m/2gi30stspHCSG+Z63dH0B6kPb3w0ANjgTQ5jjOkiAIfrltfUC2fbRhh5tkW9OtEtKju2BFv11zu0YCMwaK+b2tKOvPhMueirG46p0HfM4bBm996CAfbl2jGtWoRjWqUY1qVKMa1ahGNapRjWpUoxrVqEY1qlGNalSjwUr/B6T/3WN8mV3XAAAAAElFTkSuQmCC",
-  "features": [],
-  "docker_images": {
-    "Dotnet 6": "ghcr.io/parkervcp/yolks:dotnet_6",
-    "Dotnet 9": "ghcr.io/parkervcp/yolks:dotnet_9"
-  },
-  "file_denylist": [],
-  "startup": "./TShock.Server -ip 0.0.0.0 -port {{SERVER_PORT}} -maxplayers {{MAX_PLAYERS}} -world {{WORLD_NAME}}.wld -autocreate {{WORLD_SIZE}}",
-  "config": {
-    "files": "{}",
-    "startup": "{\n    \"done\": \"Type 'help' for a list of commands\"\n}",
-    "logs": "{}",
-    "stop": "exit"
-  },
-  "scripts": {
-    "installation": {
-      "script": "#!/bin/bash\r\n# Vanilla tModloader Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n## install packages to get version and download links\r\n\r\n## get release info and download links\r\nLATEST_JSON=$(curl --silent \"https://api.github.com/repos/Pryaxis/TShock/releases/latest\")\r\nRELEASES=$(curl --silent \"https://api.github.com/repos/Pryaxis/TShock/releases\")\r\nMATCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] && echo \"linux-amd64\" || echo \"linux-arm64\")\r\n\r\necho ${MATCH}\r\n\r\nif [ -z \"$TSHOCK_VERSION\" ] || [ \"$TSHOCK_VERSION\" == \"latest\" ]; then\r\n    DOWNLOAD_LINK=$(echo $LATEST_JSON | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH} | head -1 )\r\nelse\r\n    VERSION_CHECK=$(echo $RELEASES | jq -r --arg VERSION \"$TSHOCK_VERSION\" '.[] | select(.tag_name==$VERSION) | .tag_name')\r\n    if [ \"$TSHOCK_VERSION\" == \"$VERSION_CHECK\" ]; then\r\n        DOWNLOAD_LINK=$(echo $RELEASES | jq -r --arg VERSION \"$TSHOCK_VERSION\" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' |  grep -i ${MATCH} | head -1 )\r\n    else\r\n        echo -e \"defaulting to latest release\"\r\n        DOWNLOAD_LINK=$(echo $LATEST_JSON | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH} | head -1)\r\n    fi\r\nfi\r\n\r\n## mkdir and cd to /mnt/server/\r\nmkdir -p /mnt/server\r\n\r\ncd /mnt/server\r\n\r\n## download release\r\necho -e \"running: wget $DOWNLOAD_LINK\"\r\ncurl -sSL $DOWNLOAD_LINK -o TShock.zip\r\n\r\nunzip -o TShock.zip\r\n\r\ntar xvf TShock-*.tar\r\n\r\nrm TShock.zip TShock-*.tar\r\n\r\nchmod +x TShock.Server\r\n\r\necho -e \"install complete\"",
-      "container": "ghcr.io/parkervcp/installers:debian",
-      "entrypoint": "/bin/bash"
-    }
-  },
-  "variables": [
-    {
-      "sort": null,
-      "name": "Max Players",
-      "description": "The maximum number of players a server will hold.",
-      "env_variable": "MAX_PLAYERS",
-      "default_value": "8",
-      "user_viewable": true,
-      "user_editable": false,
-      "rules": ["required", "numeric", "digits_between:1,3"]
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v2",
+        "update_url": null
     },
-    {
-      "sort": 4,
-      "name": "Tshock Version",
-      "description": "The version on tshock that will be installed. default is latest non-pre-release",
-      "env_variable": "TSHOCK_VERSION",
-      "default_value": "latest",
-      "user_viewable": true,
-      "user_editable": false,
-      "rules": ["required", "string", "max:20"]
+    "exported_at": "2025-09-16T16:52:54+00:00",
+    "name": "tshock",
+    "author": "parker@parkervcp.com",
+    "uuid": "abebe204-ef9f-4498-a009-e5a50ed7fffb",
+    "description": "The t-shock modded terraria server.\r\n\r\nhttps://tshock.co/",
+    "tags": [
+        "tshock",
+        "terraria"
+    ],
+    "features": [],
+    "docker_images": {
+        "Dotnet 6": "ghcr.io/parkervcp/yolks:dotnet_6",
+        "Dotnet 9": "ghcr.io/parkervcp/yolks:dotnet_9"
     },
-    {
-      "sort": null,
-      "name": "World Name",
-      "description": "The name for the world file.",
-      "env_variable": "WORLD_NAME",
-      "default_value": "world",
-      "user_viewable": true,
-      "user_editable": true,
-      "rules": ["required", "string", "max:20"]
+    "file_denylist": [],
+    "startup": "./TShock.Server -ip 0.0.0.0 -port {{SERVER_PORT}} -maxplayers {{MAX_PLAYERS}} -world {{WORLD_NAME}}.wld -autocreate {{WORLD_SIZE}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\n    \"done\": \"Type 'help' for a list of commands\"\n}",
+        "logs": "{}",
+        "stop": "exit"
     },
-    {
-      "sort": null,
-      "name": "World Size",
-      "description": "Defines the worlds size. 3 sizes 1 (small), 2 (medium), 3 (large).",
-      "env_variable": "WORLD_SIZE",
-      "default_value": "1",
-      "user_viewable": true,
-      "user_editable": false,
-      "rules": ["required", "string", "alpha_dash", "max:20"]
-    }
-  ]
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\r\n# Vanilla tModloader Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n## install packages to get version and download links\r\n\r\n## get release info and download links\r\nLATEST_JSON=$(curl --silent \"https://api.github.com/repos/Pryaxis/TShock/releases/latest\")\r\nRELEASES=$(curl --silent \"https://api.github.com/repos/Pryaxis/TShock/releases\")\r\nMATCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] && echo \"linux-amd64\" || echo \"linux-arm64\")\r\n\r\necho ${MATCH}\r\n\r\nif [ -z \"$TSHOCK_VERSION\" ] || [ \"$TSHOCK_VERSION\" == \"latest\" ]; then\r\n    DOWNLOAD_LINK=$(echo $LATEST_JSON | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH} | head -1 )\r\nelse\r\n    VERSION_CHECK=$(echo $RELEASES | jq -r --arg VERSION \"$TSHOCK_VERSION\" '.[] | select(.tag_name==$VERSION) | .tag_name')\r\n    if [ \"$TSHOCK_VERSION\" == \"$VERSION_CHECK\" ]; then\r\n        DOWNLOAD_LINK=$(echo $RELEASES | jq -r --arg VERSION \"$TSHOCK_VERSION\" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' |  grep -i ${MATCH} | head -1 )\r\n    else\r\n        echo -e \"defaulting to latest release\"\r\n        DOWNLOAD_LINK=$(echo $LATEST_JSON | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH} | head -1)\r\n    fi\r\nfi\r\n\r\n## mkdir and cd to /mnt/server/\r\nmkdir -p /mnt/server\r\n\r\ncd /mnt/server\r\n\r\n## download release\r\necho -e \"running: wget $DOWNLOAD_LINK\"\r\ncurl -sSL $DOWNLOAD_LINK -o TShock.zip\r\n\r\nunzip -o TShock.zip\r\n\r\ntar xvf TShock-*.tar\r\n\r\nrm TShock.zip TShock-*.tar\r\n\r\nchmod +x TShock.Server\r\n\r\necho -e \"install complete\"",
+            "container": "ghcr.io/parkervcp/installers:debian",
+            "entrypoint": "/bin/bash"
+        }
+    },
+    "variables": [
+        {
+            "sort": null,
+            "name": "Max Players",
+            "description": "The maximum number of players a server will hold.",
+            "env_variable": "MAX_PLAYERS",
+            "default_value": "8",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "numeric",
+                "digits_between:1,3"
+            ]
+        },
+        {
+            "sort": 4,
+            "name": "Tshock Version",
+            "description": "The version on tshock that will be installed. default is latest non-pre-release",
+            "env_variable": "TSHOCK_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "string",
+                "max:20"
+            ]
+        },
+        {
+            "sort": null,
+            "name": "World Name",
+            "description": "The name for the world file.",
+            "env_variable": "WORLD_NAME",
+            "default_value": "world",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:20"
+            ]
+        },
+        {
+            "sort": null,
+            "name": "World Size",
+            "description": "Defines the worlds size. 3 sizes 1 (small), 2 (medium), 3 (large).",
+            "env_variable": "WORLD_SIZE",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "string",
+                "alpha_dash",
+                "max:20"
+            ]
+        }
+    ],
+    "image": "data:image/png;base64,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"
 }
