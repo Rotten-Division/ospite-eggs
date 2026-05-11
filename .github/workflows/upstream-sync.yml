@@ -96,42 +96,40 @@ jobs:
               try:
                   if suffix in ('.yaml', '.yml'):
                       upstream_data = yaml.safe_load(upstream_text)
+                      vendored_data = yaml.safe_load(vendored_text) if vendored_text else None
                   else:
                       upstream_data = json.loads(upstream_text)
+                      vendored_data = json.loads(vendored_text) if vendored_text else None
               except Exception as e:
-                  print(f"  {vendored_path}, upstream content does not parse, {e}, skipping")
+                  print(f"  {vendored_path}, parse failed, {e}, skipping")
                   continue
 
-              # uuid is the database identity, locally owned, never overwritten by upstream.
-              if vendored_text:
-                  vendored_data = (yaml.safe_load(vendored_text) if suffix in ('.yaml', '.yml')
-                                   else json.loads(vendored_text))
-                  if isinstance(vendored_data, dict) and 'uuid' in vendored_data:
+              if isinstance(vendored_data, dict):
+                  # uuid is the database identity, locally owned, never overwritten by upstream.
+                  if 'uuid' in vendored_data:
                       upstream_data['uuid'] = vendored_data['uuid']
-
-              # carry forward ospite tag additions if upstream removed them.
-              if vendored_text:
-                  vendored_tags = set(vendored_data.get('tags', []) if isinstance(vendored_data, dict) else [])
-                  upstream_tags = list(upstream_data.get('tags', []) or [])
-                  for t in vendored_tags:
+                  # carry forward ospite tag additions if upstream removed them.
+                  upstream_tags = list(upstream_data.get('tags') or [])
+                  for t in (vendored_data.get('tags') or []):
                       if t not in upstream_tags:
                           upstream_tags.append(t)
                   upstream_data['tags'] = upstream_tags
+                  # image is locally owned. our brand icon survives every sync,
+                  # upstream eggs that ship their own get overwritten by ours.
+                  if vendored_data.get('image'):
+                      upstream_data['image'] = vendored_data['image']
 
-              # image is locally owned. our brand icon survives every sync,
-              # upstream eggs that ship their own get overwritten by ours.
-              if vendored_text and isinstance(vendored_data, dict) and vendored_data.get('image'):
-                  upstream_data['image'] = vendored_data['image']
-
-              if suffix in ('.yaml', '.yml'):
-                  new_text = yaml.safe_dump(upstream_data, sort_keys=False)
-              else:
-                  new_text = json.dumps(upstream_data, indent=2) + "\n"
-
-              if new_text == vendored_text:
+              # compare at the parsed-data level, not text. local formatting drift
+              # (prettifier, manual edits, whitespace) must not trigger a sync pr
+              # when the structured content is identical after overlays.
+              if vendored_data == upstream_data:
                   print(f"  {vendored_path}, content matches after overlay, only ref bump needed")
                   vendored_changed = False
               else:
+                  if suffix in ('.yaml', '.yml'):
+                      new_text = yaml.safe_dump(upstream_data, sort_keys=False)
+                  else:
+                      new_text = json.dumps(upstream_data, indent=2) + "\n"
                   vendored_path.write_text(new_text)
                   vendored_changed = True
 
