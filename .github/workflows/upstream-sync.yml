@@ -26,6 +26,26 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: prune orphan upstream-sync branches
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mapfile -t refs < <(gh api "repos/${{ github.repository }}/git/matching-refs/heads/upstream-sync/" --jq '.[].ref')
+          for ref in "${refs[@]}"; do
+            branch="${ref#refs/heads/}"
+            case "$branch" in
+              upstream-sync/*) ;;
+              *) echo "skipping unexpected ref $ref"; continue ;;
+            esac
+            open=$(gh pr list --repo "${{ github.repository }}" --state open --head "$branch" --json number --jq 'length')
+            if [[ "$open" == "0" ]]; then
+              echo "deleting orphan branch $branch"
+              gh api -X DELETE "repos/${{ github.repository }}/git/refs/heads/$branch" || echo "  delete failed for $branch, continuing"
+            else
+              echo "keeping $branch, $open open pr(s)"
+            fi
+          done
+
       - name: install python deps
         run: pip install pyyaml requests
 
